@@ -1,3 +1,8 @@
+References:
+
+1. Katz & Plotkin
+2. Schnider
+
 program je napravljen sa 3 klase
 
 Prva klasa se zove "LLTgeometryClass.py" i racuna geomterijske parametre potrebne za proracun (npr. evaluacijske tocke, koordinate podkovicastih vrtloga, itd.)
