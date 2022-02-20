@@ -1,9 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Fri May 15 15:01:45 2020
-
-@author: n.tatomir
-"""
 import numpy as np
 import math
 

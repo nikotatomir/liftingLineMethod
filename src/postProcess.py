@@ -1,9 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Sun Jun 21 15:14:42 2020
-
-@author: PC
-"""
 import numpy as np
 import math 
 from mpl_toolkits.mplot3d import axes3d

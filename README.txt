@@ -1,47 +1,21 @@
-References:
+This code provides an algorithm for a steady state aerodynamic analysis of 3D wings using the Lifting Line Theory (LLT) with horseshore elements. It is based on the work done by Katz & Plotkin in Section 12.1, pg. 331 [1]
+as well on the paper published by Phillips & Snyder [2]. 
 
-1. Katz & Plotkin
-2. Schnider
+The simulation parameters are defined in the steadyLLTrun.py file. In addition, to run the simulation, this file needs to be executed.
 
-program je napravljen sa 3 klase
+The output of the code depends on whether a range of angles of attack are considered or a single angle of attack is considered.
 
-Prva klasa se zove "LLTgeometryClass.py" i racuna geomterijske parametre potrebne za proracun (npr. evaluacijske tocke, koordinate podkovicastih vrtloga, itd.)
+For a single angle of attack, the following will be outputed (see sampleResults/singleAOA):
+	1. wing geometry plot.
+	2. a plot showing the aerodyamic properties (such as aerodynamic coefficients) distribution along the wing span.
+	3. a txt file with the values of the aerodynamic properties along the wing span.
 
-Druga klasa se zove "LLTsolutionClass.py" gdje se nalazi sam proracun. Tu se racuna cirkulacija podkovicastih vrtloga, te panelne sile i momente, aerodinamicki koeficijenti
-i distribucija sila duz krila. Ova klasa je vezana za "LLTgeometryClass", sto znaci da koristi atribute izracunate u "LLTgeometryClass"
+For a range of angles of attack, the following will be outputed (see sampleResults/rangeOfAOA):
+	1. a plot showing the polars of the aerodynamic coefficients (lift, drag, moment).
+	2. a txt file with the values of the aerodynamic coefficients for each angle of attack.
 
-Treca klasa se zove "LLTpostProcessingClass.py". Ona daje rezultate proracuna u obliku textfile-a i slika. Ona je vezana za "LLTgeometryClass" i "LLTsolutionClass".
 
-Za pokrenuti kod, koristi se "LLT_run.py"
+Bibliography
 
-U sustini, za proracun jedino se trebaju zadati sljedeci parametri u fajlu "LLT_run.py":
-
-PRIMJER:
-
-b= 10.
-wakeLenFactor = 40. 
-Lam = 0. 
-beta = 10. 
-cRoot = 1. 
-cTip = 1. 
-Nspan = int(200) 
-rho = 1.
-freestreamVel = 1. 
-alphaRange = np.linspace(5,5,1) 
-cRef = 1. 
-HSbreak = 0.25 
-typeSpacing = "uniform" # moze biti "uniform" ili "cosine"
-typeEvalPt = "center" # moze biti "center" ili "glauert". No ako je typeSpacing "uniform" onda typeEvalPt MORA biti "center"
-
-Oni se nalaze odmah na pocetku koda, i objasnjenje parametra je dano. Kod je moze vrtiti za jedan napadni kut ili za raspon kuteva. 
-Na primjer, ako se stavi da je alphaRange = np.linspace(5,10,1), kod ce napraviti proracun za napadni kut od 5 stupnjeva.
-Ako se stavi da je alphaRange = np.linspace(0,10,11), kod ce napraviti proracun za sljedeci raspon kuteva [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-
-Za kraj, ako se proracun izvrti za raspon kuteva, u folderu gdje se nalaze python kodovi ce se pojaviti 2 fajla
-1. textfile sa integralnim aerodinamickim velicinama u zavisnosti od kuta
-2. graf sa integralnim aerodinamickim velicinama u zavisnosti od kuta
-
-ako se proracun izvrti za jedan kut, u folderu gdje se nalaze python kodovi ce se pojaviti 3 fajla
-1. textfile sa aerodinamickim velicinama duz krila + integralne velicine za propisani napadni kut 
-2. graf sa aerodinamickim velicinama duz krila za propisani napadni kut
-3. graf sa geometrijom krila i podkovicastih vrtloga za propisani napadni kut
+[1] Katz, Joseph, and Allen Plotkin. Low-speed aerodynamics. Vol. 13. Cambridge university press, 2001.
+[2] Phillips, Warren F., and D. O. Snyder. "Modern adaptation of Prandtl's classic lifting-line theory." Journal of Aircraft 37, no. 4 (2000): 662-670.
