@@ -7,7 +7,7 @@ Created on Fri May 15 15:01:45 2020
 import numpy as np
 import math
 
-class wingCalc():
+class solution():
     
     def __init__(self,geom,freestreamVel, rho, cRef):
         self.geom = geom

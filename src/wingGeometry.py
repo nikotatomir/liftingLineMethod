@@ -8,7 +8,7 @@ import numpy as np
 import math
 import sys
 
-class wingGeom():
+class wingGeometry():
     
     def __init__(self, b, Lam, beta, cRoot, cTip, Nspan, alpha, wakeLenFactor, HSbreak, typeSpacing, typeEvalPt):
         self.b = b

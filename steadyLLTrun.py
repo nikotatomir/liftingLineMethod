@@ -8,9 +8,9 @@ import numpy as np
 import math 
 from mpl_toolkits.mplot3d import axes3d
 import matplotlib.pyplot as plt
-from LLTgeometryClass import wingGeom
-from LLTsolutionClass import wingCalc
-from LLTpostProcessingClass import postProcess
+from src.wingGeometry import wingGeometry
+from src.solution import solution
+from src.postProcess import postProcess
 
 #------------------------------------------------------------------------------------------#
 
@@ -23,7 +23,7 @@ cTip = 1. # wing tip chord
 Nspan = int(20) # TOTAL numbers of panels, must be EVEN
 rho = 1. # density in kg/m3
 freestreamVel = 1. # freestream angle of attack
-alphaRange = np.linspace(5,10,1) # range of geometric AOA considered
+alphaRange = np.linspace(5,10,5) # range of geometric AOA considered
 cRef = 1. # reference chord length
 HSbreak = 0.25 # location where HorseShoe vorticies break, for example 0.25 denotes the the HorseShoe vorticies break at 0.25 the local chord length behind the trailing edge
 typeSpacing = "uniform" # "uniform" or "cosine"
@@ -35,9 +35,9 @@ AOA, liftCoeff, inducedDragCoeff, momentCoeff_Y, gammaDistribution, liftCoeffDis
 for i in range(len(alphaRange)): # angle of attack in degrees
     alpha = alphaRange[i]
     
-    wing = wingGeom(b, Lam, beta, cRoot, cTip, Nspan, alpha, wakeLenFactor, HSbreak, typeSpacing, typeEvalPt)
+    wing = wingGeometry(b, Lam, beta, cRoot, cTip, Nspan, alpha, wakeLenFactor, HSbreak, typeSpacing, typeEvalPt)
     
-    sol = wingCalc(wing, freestreamVel, rho, cRef)
+    sol = solution(wing, freestreamVel, rho, cRef)
 
     AR = b**2/sol.S_projected
     print ("AR =", AR),    print ("AOA =", alpha)
