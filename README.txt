@@ -14,6 +14,7 @@ For a range of angles of attack, the following will be outputed (see sampleResul
 	1. a plot showing the polars of the aerodynamic coefficients (lift, drag, moment).
 	2. a txt file with the values of the aerodynamic coefficients for each angle of attack.
 
+Package requirements for running the simulations in a Conda virtual environment --> requirements.yml file.
 
 Bibliography
 
